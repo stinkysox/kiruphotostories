@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-gold-500 text-xs md:text-sm tracking-[0.4em] uppercase font-sans font-semibold mb-6">
-            Kiruphotostories Photography & Videography
+            Kiruphotostories
           </h2>
         </motion.div>
         
