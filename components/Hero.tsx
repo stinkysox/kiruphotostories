@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
     <section 
       ref={ref}
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-20"
     >
       {/* Animated Background */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-gold-500 text-xs md:text-sm tracking-[0.4em] uppercase font-sans font-semibold mb-6">
-            Kiru Gowda Photography & Videography
+            Kiruphotostories Photography & Videography
           </h2>
         </motion.div>
         
