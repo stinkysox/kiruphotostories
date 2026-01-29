@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GALLERY_ITEMS } from '../constants';
 
-const categories = ['all', 'wedding', 'pre-wedding', 'films'];
+const categories = ['all', 'wedding', 'pre-wedding', 'engagement', 'maternity'];
 
 const Gallery: React.FC = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -60,7 +60,7 @@ const Gallery: React.FC = () => {
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                 transition={{ duration: 0.5 }}
-                className={`relative overflow-hidden group rounded-sm shadow-md cursor-pointer ${item.id % 4 === 0 || item.id === 1 ? 'md:row-span-2' : 'md:row-span-1'}`}
+                className={`relative overflow-hidden group rounded-sm shadow-md cursor-pointer ${item.id % 5 === 0 ? 'md:col-span-2' : 'md:col-span-1'} ${item.id % 3 === 0 ? 'md:row-span-2' : 'md:row-span-1'}`}
               >
                 <div className="absolute inset-0 bg-gray-200 z-0" />
                 

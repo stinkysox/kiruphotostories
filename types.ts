@@ -16,7 +16,7 @@ export interface StatItem {
 
 export interface GalleryItem {
   id: number;
-  category: 'wedding' | 'pre-wedding' | 'films' | 'all';
+  category: 'wedding' | 'pre-wedding' | 'engagement' | 'maternity' | 'all';
   imageUrl: string;
   title: string;
 }
