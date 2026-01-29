@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Instagram } from 'lucide-react';
 import { SOCIAL_LINKS } from '../constants';

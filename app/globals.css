@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-padding-top: 80px; /* Matches the h-20 (80px) Navbar height */
+}
+body {
+  background-color: #FAFAFA;
+  color: #1A1A1A;
+}
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAFAFA;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37; /* Gold 500 */
+  border-radius: 5px;
+  border: 2px solid #FAFAFA; /* Padding effect */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #997B1E; /* Gold 700 */
+}

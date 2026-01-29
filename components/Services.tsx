@@ -1,8 +1,10 @@
+"use client";
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { SERVICES } from '../constants';
 
-const containerVariants = {
+
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -12,7 +14,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -58,7 +60,7 @@ const Services: React.FC = () => {
               <div className="relative z-10">
                 <div className="flex justify-center mb-8">
                   <div className="p-5 bg-white shadow-sm rounded-full text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-500">
-                    {React.cloneElement(service.icon as React.ReactElement, { className: "w-8 h-8" })}
+                    {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-8 h-8" })}
                   </div>
                 </div>
                 <h4 className="font-serif text-3xl text-charcoal mb-4 group-hover:text-gold-600 transition-colors">{service.title}</h4>
