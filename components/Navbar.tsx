@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
                  <img 
                   src="https://i.postimg.cc/bw8nqw6d/IMG-5406-JPG.jpg" 
                   alt="Kiru Photostories" 
-                  className={`transition-all duration-300 ${scrolled ? 'h-16' : 'h-24'} w-auto object-contain rounded-xl shadow-sm`}
+                  className={`transition-all duration-300 ${scrolled ? 'h-12 md:h-16' : 'h-16 md:h-24'} w-auto object-contain rounded-xl shadow-sm`}
                 />
               </a>
             </div>

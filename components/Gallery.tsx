@@ -76,18 +76,14 @@ const Gallery: React.FC = () => {
                 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex flex-col justify-end p-8">
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                     <p className="text-gold-400 text-xs font-sans uppercase tracking-[0.2em] mb-2">
                       {item.category}
                     </p>
                     <h4 className="text-white font-serif text-3xl">
                       {item.title}
                     </h4>
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             ))}
