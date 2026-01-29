@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import { SOCIAL_LINKS } from '../constants';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    date: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Format the message for WhatsApp
+    const text = `*New Inquiry via Website*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Date:* ${formData.date}%0A*Message:* ${formData.message}`;
+    
+    // Redirect to WhatsApp API
+    // Using the provided number: 7022993500 (Adding 91 for India country code)
+    const whatsappUrl = `https://wa.me/917022993500?text=${text}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <footer id="contact" className="bg-white pt-24 pb-12 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,8 +55,8 @@ const Contact: React.FC = () => {
                   <Phone size={20} />
                 </div>
                 <div>
-                  <p className="text-xs uppercase text-gray-400 tracking-wider">Phone</p>
-                  <p className="text-charcoal font-medium text-lg">{SOCIAL_LINKS.contact}</p>
+                  <p className="text-xs uppercase text-gray-400 tracking-wider">Phone / WhatsApp</p>
+                  <p className="text-charcoal font-medium text-lg">+91 {SOCIAL_LINKS.contact}</p>
                 </div>
               </div>
 
@@ -41,7 +66,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase text-gray-400 tracking-wider">Email</p>
-                  <p className="text-charcoal font-medium text-lg">kiru.photostories@gmail.com</p>
+                  <p className="text-charcoal font-medium text-lg">Kiruphotostories1997@gmail.com</p>
                 </div>
               </div>
               
@@ -59,32 +84,65 @@ const Contact: React.FC = () => {
 
           {/* Form */}
           <div className="bg-gray-50 p-8 md:p-10 rounded-lg shadow-sm">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                  <input type="text" className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" placeholder="Your Name" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" 
+                    placeholder="Your Name" 
+                  />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Phone</label>
-                  <input type="tel" className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" placeholder="Mobile Number" />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" 
+                    placeholder="Mobile Number" 
+                  />
                 </div>
               </div>
               <div>
                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Event Date</label>
-                <input type="date" className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" />
+                <input 
+                  type="date" 
+                  name="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                  className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors text-gray-600" 
+                />
               </div>
               <div>
                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Message</label>
-                <textarea rows={4} className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" placeholder="Tell us about your event..."></textarea>
+                <textarea 
+                  rows={4} 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full bg-white border-b-2 border-gray-200 focus:border-gold-500 outline-none py-3 px-4 transition-colors" 
+                  placeholder="Tell us about your event..."
+                ></textarea>
               </div>
               <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-charcoal text-white py-4 font-sans uppercase tracking-widest text-sm hover:bg-gold-500 transition-colors duration-300"
+                type="submit"
+                className="w-full bg-charcoal text-white py-4 font-sans uppercase tracking-widest text-sm hover:bg-gold-500 transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                Send Message
+                Send via WhatsApp <Send size={16} />
               </motion.button>
+              <p className="text-xs text-gray-400 text-center mt-2">
+                Clicking send will open WhatsApp with your pre-filled message.
+              </p>
             </form>
           </div>
         </div>
